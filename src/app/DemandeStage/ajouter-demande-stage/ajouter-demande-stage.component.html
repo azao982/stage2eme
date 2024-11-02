@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de stage</title>
+    <!-- Inclusion des fichiers CSS Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Inclusion de Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS personnalisé -->
+    <style>
+        body {
+            font-family:cursive;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            max-width: 800px;
+            margin: auto;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            border-color: #031d09;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #218838;
+            border-color: #215f2e;
+        }
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #343a40;
+            font-size: 18px;
+        }
+        .form-group input, .form-group select {
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        .form-group input:focus, .form-group select:focus {
+            box-shadow: 0 0 5px #28a745;
+            border-color: #28a745;
+        }
+        .form-group i {
+            color: #6c757d;
+            margin-right: 10px;
+        }
+        .form-group .invalid-feedback {
+            color: #dc3545;
+        }
+        .form-group .valid-feedback {
+            color: #28a745;
+        }
+        h2, h4 {
+            font-weight: bold;
+            color: #616263;
+            font-family: cursive;
+            font-size:17px;
+        }
+        .stage-details-container {
+            margin-bottom: 20px;
+        }
+        .stage-details p {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .btn-dark {
+            background-color: #343a40;
+            border-color: #343a40;
+            font-size: 16px;
+        }
+        .btn-dark:hover {
+            background-color: #23272b;
+            border-color: #1d2124;
+        }
+        p{
+            color: #a9aaaa;
+        }
+        .b{
+            background-color: #616263;
+        }
+        span{
+            color: #031d09;
+        }
+        i{
+            color: #031d09;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <br>
+    <div class="form-container">
+        <form [formGroup]="demandeForm">
+            <!-- Informations sur le stage demandé -->
+            <h4><i class="fas fa-info-circle"></i> Informations sur le stage demandé :</h4>
+            
+            <br>
+            <!-- Détails du stage sélectionné -->
+            <div *ngIf="selectedStage" class="stage-details-container">
+                <div class="stage-details">
+                    <div class="stage-info">
+                        <div>
+                            <p><i class="fas fa-id-badge"></i><span>ID du Stage :</span> {{ selectedStage.idStage }}</p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-book"></i> <span>Sujet du Stage :</span> {{ selectedStage.sujet }}</p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-calendar-alt"></i> <span>Date de Début :</span> {{ selectedStage.dateDebut | date }}</p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-align-left"></i> <span>Description :</span> {{ selectedStage.description }}</p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-calendar-check"></i> <span>Date de Fin :</span> {{ selectedStage.dateFin | date }}</p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-building"></i> <span>Département :</span> {{ selectedStage.departement }}</p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-dollar-sign"></i> <span>Montant :</span> {{ selectedStage.montant | currency }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            <!-- Informations sur la demande de stage -->
+            <h4><i class="fas fa-file-alt"></i> Informations sur la demande de stage :</h4>
+            <br>
+            
+            <!-- Référence -->
+            <div class="form-group">
+                <label for="reference"><i class="fas fa-tag"></i> Référence :</label>
+                <input type="text" class="form-control" id="reference" name="reference" placeholder="Référence" formControlName="reference" required>
+                <div *ngIf="demandeForm.get('reference')?.invalid && demandeForm.get('reference')?.touched" class="invalid-feedback">
+                    <h5>La référence ne doit pas être vide.</h5>
+                </div>
+            </div>
+            
+            <!-- Type de stage -->
+            <div class="form-group">
+                <label for="typeStage"><i class="fas fa-briefcase"></i> Type de Stage :</label>
+                <input type="text" class="form-control" id="typeStage" name="typeStage" placeholder="Type de stage" formControlName="typeStage" required [ngClass]="{'is-invalid': demandeForm.get('typeStage')?.invalid && demandeForm.get('typeStage')?.touched}">
+                <div *ngIf="demandeForm.get('typeStage')?.invalid && demandeForm.get('typeStage')?.touched" class="invalid-feedback">
+                    <h5>Le type de stage ne doit pas être vide.</h5>
+                </div>
+            </div>
+            
+            <!-- Niveau d'étude -->
+            <div class="form-group">
+                <label for="niveauEtude"><i class="fas fa-graduation-cap"></i> Niveau d'Étude :</label>
+                <input type="text" class="form-control" id="niveauEtude" name="niveauEtude" placeholder="Niveau d'étude" formControlName="niveauEtude" required [ngClass]="{'is-invalid': demandeForm.get('niveauEtude')?.invalid && demandeForm.get('niveauEtude')?.touched}">
+                <div *ngIf="demandeForm.get('niveauEtude')?.invalid && demandeForm.get('niveauEtude')?.touched" class="invalid-feedback">
+                    <h5>Le niveau d'étude ne doit pas être vide.</h5>
+                </div>
+            </div>
+            
+            <!-- Établissement -->
+            <div class="form-group">
+                <label for="etablissement"><i class="fas fa-university"></i> Établissement :</label>
+                <input type="text" class="form-control" id="etablissement" name="etablissement" placeholder="Établissement" formControlName="etablissement" required [ngClass]="{'is-invalid': demandeForm.get('etablissement')?.invalid && demandeForm.get('etablissement')?.touched}">
+                <div *ngIf="demandeForm.get('etablissement')?.invalid && demandeForm.get('etablissement')?.touched" class="invalid-feedback">
+                    <h5>L'établissement ne doit pas être vide.</h5>
+                </div>
+            </div>
+            
+            <!-- Date de début -->
+            <div class="form-group">
+                <label for="dateDebut"><i class="fas fa-calendar-alt"></i> Date de Début :</label>
+                <input type="date" class="form-control" id="dateDebut" name="dateDebut" formControlName="dateDebut" required [ngClass]="{'is-invalid': demandeForm.get('dateDebut')?.invalid && demandeForm.get('dateDebut')?.touched}">
+                <div *ngIf="demandeForm.get('dateDebut')?.invalid && demandeForm.get('dateDebut')?.touched" class="invalid-feedback">
+                    <h5>La date de début ne doit pas être vide.</h5>
+                </div>
+            </div>
+            
+            <!-- Date de fin -->
+            <div class="form-group">
+                <label for="dateFin"><i class="fas fa-calendar-check"></i> Date de Fin :</label>
+                <input type="date" class="form-control" id="dateFin" name="dateFin" formControlName="dateFin" required [ngClass]="{'is-invalid': demandeForm.get('dateFin')?.invalid && demandeForm.get('dateFin')?.touched}">
+                <div *ngIf="demandeForm.get('dateFin')?.invalid && demandeForm.get('dateFin')?.touched" class="invalid-feedback">
+                    <h5>La date de fin ne doit pas être vide.</h5>
+                </div>
+            </div>
+            
+            <!-- Statut -->
+            <div class="form-group">
+                <label for="statut"><i class="fas fa-check-circle"></i> Statut :</label>
+                <select class="form-control" id="statut" name="statut" formControlName="statut" required [ngClass]="{'is-invalid': demandeForm.get('statut')?.invalid && demandeForm.get('statut')?.touched}">
+                    <option value="en_cours">En cours</option>
+                    <option value="acceptée">Accepté</option>
+                    <option value="refusée">Refusé</option>
+                </select>
+                <div *ngIf="demandeForm.get('statut')?.invalid && demandeForm.get('statut')?.touched" class="invalid-feedback">
+                    <h5>Le statut ne doit pas être vide.</h5>
+                </div>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="text-center">
+                <button class="btn btn-default" onclick="window.location.href='/listStageCon';"><i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="onAjouter()" class="btn btn-secondary"><i class="fas fa-circle-plus"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Inclusion des fichiers JavaScript Bootstrap et Angular -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

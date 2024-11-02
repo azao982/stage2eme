@@ -1,0 +1,186 @@
+
+body{
+  margin-top:20px;
+  background:#f8f8f8
+}
+label{
+  font-weight:bold ;
+  font-style: italic;
+}
+input
+{
+  color: rgb(80, 32, 15);
+  background-color: rgb(245, 246, 252);
+}
+.e-profile {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.25rem;
+  padding: 2rem;
+}
+
+.e-profile .d-flex {
+  align-items: center;
+}
+
+.e-profile .rounded {
+  border-radius: 0.25rem;
+}
+
+.e-profile .mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.e-profile .mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.e-profile .text-center {
+  text-align: center;
+}
+
+.e-profile .text-sm-left {
+  text-align: left;
+}
+
+.e-profile .text-sm-right {
+  text-align: right;
+}
+
+.e-profile .pt-sm-2 {
+  padding-top: 0.5rem;
+}
+
+.e-profile .pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.e-profile .mb-0 {
+  margin-bottom: 0;
+}
+
+.e-profile .text-nowrap {
+  white-space: nowrap;
+}
+
+.e-profile .badge-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.e-profile .text-muted {
+  color: #6c757d;
+}
+
+.e-profile .small {
+  font-size: 80%;
+}
+
+.e-profile .nav-tabs {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.e-profile .nav-tabs .nav-link {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.e-profile .nav-tabs .nav-link.active {
+  background-color: #e9ecef;
+  border-bottom: none;
+}
+
+.e-profile .form-control {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.e-profile .form-control:focus {
+  box-shadow: none;
+}
+
+.e-profile .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.e-profile .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.e-profile .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.e-profile .btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.e-profile .fa-fw {
+  width: 1.25em;
+  text-align: center;
+}
+
+.e-profile .fa-user {
+  color: #555;
+}
+
+.e-profile .fa-person {
+  color: #555;
+}
+
+.e-profile .fa-at {
+  color: #555;
+}
+
+.e-profile .fa-phone {
+  color: #8ab77d;
+}
+
+.e-profile .fa-address-card {
+  color: #555;
+}
+
+.e-profile .fa-cogs {
+  color: #555;
+}
+
+.e-profile .fa-graduation-cap {
+  color: #4b1010;
+}
+
+.e-profile .fa-id-card
+  {
+    color: #555;
+  }
+
+  .e-profile .fa-lock {
+    color: #4a92df;
+  }
+
+  .e-profile .fa-key {
+    color: #ec3a3a;
+  }
+
+  .e-profile .fa-sign-out-alt {
+    color: #0e63ae;
+  }
+
+  .e-profile .fa-sign-out {
+    color: #2391da;
+  }
+  .e-profile {
+    background-color: #f8f9fa;
+    border: 1px solid #274a8b;
+    border-radius: 0.25rem;
+    padding: 2rem;
+  }
+.h{
+  font-size: 15px;
+}

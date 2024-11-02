@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Utilisateur</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-4 mb-4">
+                <div class="panel panel-default text-center p-4 shadow-sm">
+                    <div class="panel-body">
+                        <div class="pv-lg mb-3">
+                            <img class="center-block img-responsive img-circle img-thumbnail thumb96" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Contact">
+                        </div>
+                        <h3 class="m0 text-bold" id="nom-complet">{{user.nom}} {{user.prenom}}</h3>
+                        <div class="mv-lg mt-3">
+                            <p>Bonjour, je suis <strong>{{user.nom}} {{user.prenom}}</strong>.<br>Je suis <strong>{{user.fonction}}</strong>.<br>Vous pouvez me contacter via <strong>{{user.email}}</strong>.</p>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a class="btn btn-info" (click)="onEnvoyerMail()">
+                                <i class="fas fa-envelope mr-2"></i>Envoyer un message
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="panel panel-default p-4 shadow-sm">
+                    <div class="panel-body">
+                        <div class="h4 text-center mb-4">
+                            <i class="fas fa-info-circle mr-2"></i>Détails de {{user.nom}}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form class="form-horizontal">
+                                    
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="nom">Nom</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input class="form-control" id="nom" type="text" name="nom" [(ngModel)]="user.nom" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="prenom">Prénom</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input class="form-control" id="prenom" type="text" name="prenom" [(ngModel)]="user.prenom" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="email">Email</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                </div>
+                                                <input class="form-control" id="email" type="email" name="email" [(ngModel)]="user.email" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="mobile">Mobile</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                </div>
+                                                <input class="form-control" id="mobile" type="text" name="mobile" [(ngModel)]="user.mobile" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="cin">CIN</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                                </div>
+                                                <input class="form-control" id="cin" type="text" name="cin" [(ngModel)]="user.cin" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="password">Password</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                </div>
+                                                <input class="form-control" id="password" type="password" name="password" [(ngModel)]="user.password" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="profile">Profile</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                                </div>
+                                                <input class="form-control" id="profile" type="text" name="profile" [(ngModel)]="user.profile" required readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-9 offset-sm-3">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="favoriteContact">
+                                                <label class="form-check-label" for="favoriteContact">Favori ?</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="text-right mt-4">
+                                    <a class="text-muted" (click)="onRetour()">
+                                        <i class="fas fa-arrow-left mr-2"></i><strong>Retour ?</strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

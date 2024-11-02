@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family:cursive;
+            margin: 0;
+            padding: 0;
+            height: 1600px;
+            background-color: #f2f4f8;
+        }
+    
+        .btn {
+            background-color: #c6c3d3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .btn:hover {
+            background-color: #d5d5eb;
+        }
+    
+        .container {
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        .card-header {
+            color: #2d3436;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+        }
+    
+        .card-body {
+            padding: 20px;
+        }
+    
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    
+        .icon-animate {
+            animation: icon-bounce 2s infinite;
+        }
+    
+        @keyframes icon-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+    
+        .social-icons .fa-twitter {
+            background-color: #cfe6f5;
+        }
+    
+        .social-icons .fa-dribbble {
+            background-color: #ea4c89;
+        }
+    
+        .social-icons .fa-youtube {
+            background-color: #ff0000;
+        }
+    
+        .social-icons a:hover {
+            opacity: 0.8;
+        }
+    
+        .card-content {
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            transition: background 0.3s ease;
+        }
+    
+        .card-content:hover {
+            background: linear-gradient(135deg, #ebedee 0%, #fdfbfb 100%);
+        }
+    
+        .card-content p {
+            font-style: italic;
+            margin: 10px 0 0;
+        }
+    
+        .card-content i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+    
+        .card-content.card-user {
+            background-color: #dfe6e9;
+        }
+    
+        .card-content.card-stages {
+            background-color: #bdbfc5;
+        }
+    
+        .card-content.card-demande-en-cours {
+            background-color: #e1ade5;
+        }
+    
+        .card-content.card-demande-acceptee {
+            background-color: #c8d6e5;
+        }
+    
+        .card-content.card-demande-refusee {
+            background-color: #f7d5d5;
+        }
+    
+        .card-content.card-boites-mails {
+            background-color: #f3dfaf;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <button (click)="logout()" class="btn btn-default position-absolute top-0 end-0 m-3">
+        <i class="fa fa-sign-out"></i>
+    </button>
+    <div class="container">
+        <div class="card">
+            <div class="card-header" style="background-color: #e1e5e9;"></div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 order-lg-1 order-2"></div>
+                    <div class="col-lg-4 mt-n3 order-lg-2 order-1">
+                        <div class="mt-n5">
+                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                <div class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
+                                    style="width: 110px; height: 110px;">
+                                    <div
+                                        class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
+                                        style="width: 100px; height: 100px;">
+                                        <img (click)="detailUser(user?.idUser)" src="assets/safi.jpg" alt="" class="w-100 h-100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h5 class="fs-5 mb-0 fw-semibold">{{user?.nom}}</h5>
+                                <p class="mb-0 fs-4">{{user?.email}}</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around m-4">
+                            <div class="text-center">
+                                <i class="fa fa-file fs-6 d-block mb-2 icon-animate" routerLink="/listDemande"></i>
+                                <h4 class="mb-0 fw-semibold lh-1" routerLink="/listDemande">938</h4>
+                                <br>
+                                <p class="mb-0 fs-4" routerLink="/listDemande"><strong>Demandes</strong></p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa fa-user fs-6 d-block mb-2 icon-animate" routerLink="/listUser"></i>
+                                <h4 class="mb-0 fw-semibold lh-1" routerLink="/listUser">586</h4>
+                                <br>
+                                <p class="mb-0 fs-4" routerLink="/listUser"><strong> Utilisateurs</strong></p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa fa-briefcase icon-animate"
+                                routerLink="/listStageCon"></i>
+                                <h4 class="mb-0 fw-semibold lh-1" routerLink="/listStageCon">120</h4>
+                                <br>
+                                <p class="mb-0 fs-4" routerLink="/listStageCon"><strong>Stages</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-light-info rounded-2" id="pills-tab"
+                    role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button
+                            class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6"
+                            id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
+                            role="tab" aria-controls="pills-profile" aria-selected="true">
+                            <i class="fa fa-user me-2 fs-6" style="color: black;"></i>
+                            <span class="d-none d-md-block" style="color: black;" (click)="modifierUser(user?.idUser)">Profile</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button
+                            class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6"
+                            id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button"
+                            role="tab" aria-controls="pills-friends" aria-selected="false" tabindex="-1">
+                            <i class="fa fa-tasks me-2 fs-6" style="color: black;"></i>
+                            <span class="d-none d-md-block" style="color: black;" routerLink="/DashboardAdmine">Actions</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab" tabindex="0">
+                        <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
+                            
+                        </div>
+                        <div class="grid-container">
+                            <div class="card hover-img">
+                                <div class="card-content card-user">
+                                    <a [routerLink]="['/listUser']" class="text-decoration-none text-dark">
+                                        <i class="fa fa-users icon-animate"></i>
+                                        <p>Liste des utilisateurs</p>
+                                        </a>
+                                </div>
+                            </div>
+                            <div class="card hover-img">
+                                <div class="card-content card-stages">
+                                    <a [routerLink]="['/listStageCon']" class="text-decoration-none text-dark">
+                                    <i class="fa fa-briefcase icon-animate"></i>
+                                    <p>Liste des stages</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card hover-img">
+                                <div class="card-content card-demande-en-cours">
+                                    <a [routerLink]="['/demandeEnCours']" class="text-decoration-none text-dark">
+
+                                    <i class="fa fa-clock-o icon-animate"></i>
+                                    <p>Liste des demandes en cours</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card hover-img">
+                                <div class="card-content card-demande-acceptee">
+                                    <a [routerLink]="['/demandeTerminee']" class="text-decoration-none text-dark">
+
+                                    <i class="fa fa-check-circle icon-animate"></i>
+                                    <p>Liste des demandes acceptées</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card hover-img">
+                                <div class="card-content card-demande-refusee">
+                                    <a [routerLink]="['/demandeRefusees']" class="text-decoration-none text-dark">
+
+                                    <i class="fa fa-times-circle icon-animate"></i>
+                                    <p>Liste des demandes refusées</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card hover-img">
+                                <div class="card-content card-boites-mails">
+                                    <a [routerLink]="['/listmaile']" class="text-decoration-none text-dark">
+
+                                    <i class="fa fa-envelope icon-animate"></i>
+                                
+                                    <p>Boîtes mails</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+</body>
+
+</html>

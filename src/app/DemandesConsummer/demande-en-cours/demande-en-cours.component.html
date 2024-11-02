@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <title>Demandes en Cours</title>
+  <style>
+    body {
+      font-family: cursive;
+      background-color: #f9f9f9;
+    }
+
+    .card {
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .search-container .input-group {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .search-container .form-control {
+      border: none;
+      box-shadow: none;
+    }
+
+    .search-container .btn {
+      border-radius: 0 20px 20px 0;
+    }
+    h2{
+      font-family: cursive;
+      font-weight: bold;
+    }
+
+    h2 img {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    /* Texte en gras et cursive */
+    .card-body p {
+      font-size: 16px;
+      color: #333;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #4a90e2;
+      border-color: #4a90e2;
+    }
+
+    .btn-warning {
+      background-color: #f5a623;
+      border-color: #f5a623;
+    }
+
+    .rounded-circle {
+      border: 2px solid #f9f9f9;
+    }
+
+    /* Custom colors for the cards */
+    .card:nth-child(odd) {
+      background-color: #f0f8ff;
+    }
+
+    .card:nth-child(even) {
+      background-color: #fafad2;
+    }
+
+    /* Tooltip styles */
+    [data-toggle="tooltip"] {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-1">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="text-center mb-4">
+          <img src="/assets/demandeEnCours.png" style="width:60px; height:60px;" alt="Icon">
+          <h2>Liste des demandes en Cours</h2>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-sm-6">
+        <div class="search-container">
+          <div class="input-group">
+            <input type="text" id="searchInput" [(ngModel)]="searchKeyword" class="form-control" placeholder="Rechercher..." />
+            <button class="btn btn-dark" (click)="searchDemande()">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <!-- Loop through demand list -->
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let Demande of (searchResults.length ? searchResults : demandes); let i = index">
+        <!-- Card structure for each demand -->
+        <div class="card shadow-sm rounded">
+          <!-- Card body -->
+          <div class="card-body">
+            <!-- Avatar -->
+            <div class="avatar avatar-xl mb-3 text-center">
+              <img [src]="avatars[i % avatars.length]" alt="Avatar" class="rounded-circle">
+            </div>
+            <!-- Title and description for demand -->
+            <p class="card-text"><strong>Référence:</strong> {{ Demande.reference }}</p>
+            <p class="card-text"><strong>Type de Stage:</strong> {{ Demande.typeStage }}</p>
+            <p class="card-text"><strong>Niveau d'Étude:</strong> {{ Demande.niveauEtude }}</p>
+            <p class="card-text"><strong>Établissement:</strong> {{ Demande.etablissement }}</p>
+            <p class="card-text"><strong>Date de Début:</strong> {{ Demande.dateDebut }}</p>
+            <p class="card-text"><strong>Date de Fin:</strong> {{ Demande.dateFin }}</p>
+            <!-- Actions -->
+            <div class="text-center mt-3">
+              <a class="btn btn-primary btn-sm mr-2" title="Show" data-toggle="tooltip" (click)="DetailDemande(Demande.idDemande)">
+                <i class="fa fa-info-circle"></i>
+              </a>
+              <a class="btn btn-warning btn-sm" title="Edit" data-toggle="tooltip" (click)="validerDemande(Demande.idDemande)">
+                <i class="fa fa-check"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Stage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: cursive;
+            font-weight: bold;
+            height: auto;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #b9bdc0;
+            color: #ffffff;
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary, .btn-dark {
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        .btn-dark {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+        .btn-dark:hover {
+            background-color: #23272b;
+            border-color: #1d2124;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-family:cursive;
+            color: #484c50;
+            font-size: 25px;
+        }
+
+        .text-center h2 {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+input{
+    color: #787879;
+}
+        .invalid-feedback {
+            display: block;
+            font-size: 14px;
+            color: #dc3545;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        label i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <div class="card shadow-lg">
+            <div class="card-header text-center">
+                <h2><i class="fas fa-edit"></i>Modifier Stage</h2>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="modifierStage()">
+                    <div class="mb-3">
+                        <label for="sujet" class="form-label">
+                            <i class="fas fa-file-signature"></i> Sujet:
+                        </label>
+                        <input type="text" class="form-control" id="sujet" name="sujet" [(ngModel)]="stage.sujet" placeholder="Entrez le sujet ici" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dateDebut" class="form-label">
+                            <i class="fas fa-calendar-alt"></i> Date Début:
+                        </label>
+                        <input type="date" class="form-control" id="dateDebut" name="dateDebut" [(ngModel)]="stage.dateDebut" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dateFin" class="form-label">
+                            <i class="fas fa-calendar-alt"></i> Date Fin:
+                        </label>
+                        <input type="date" class="form-control" id="dateFin" name="dateFin" [(ngModel)]="stage.dateFin" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">
+                            <i class="fas fa-file-alt"></i> Description:
+                        </label>
+                        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="stage.description" placeholder="Entrez la description ici" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="departement" class="form-label">
+                            <i class="fas fa-building"></i> Département:
+                        </label>
+                        <input type="text" class="form-control" id="departement" name="departement" [(ngModel)]="stage.departement" placeholder="Entrez le département ici" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="montant" class="form-label">
+                            <i class="fas fa-dollar-sign"></i> Montant:
+                        </label>
+                        <input type="number" class="form-control" id="montant" name="montant" [(ngModel)]="stage.montant" placeholder="Entrez le montant ici" required>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-dark" onclick="window.location.href='/listStageCon';"><i class="fas fa-chevron-left"></i> Retour
+                        </button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier Stage</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

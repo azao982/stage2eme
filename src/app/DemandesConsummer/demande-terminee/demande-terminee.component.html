@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des demandes terminées</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: cursive;
+        }
+        h2 {
+            color: #00796b;
+            font-family: cursive;
+            text-align: center;
+            margin: 20px 0;
+            animation: colorChange 6s infinite;
+        }
+        @keyframes colorChange {
+            0%, 100% { color: #00796b; }
+            50% { color: #004d40; }
+        }
+        .search-container {
+            margin-bottom: 30px;
+        }
+        .search-container .input-group {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .search-container input {
+            border-right: none;
+            border-radius: 30px 0 0 30px;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+        .search-container button {
+            border-radius: 0 30px 30px 0;
+            border-left: none;
+            background-color: #00796b;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #004d40;
+        }
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #d4fdf6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .card .card-body {
+            position: relative;
+            padding: 25px;
+            border-radius: 20px;
+        }
+        .card .avatar {
+            position: absolute;
+            top: -40px;
+            left: 25px;
+            width: 70px;
+            height: 70px;
+        }
+        .card .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #e0f7fa;
+        }
+        .card p {
+            margin: 10px 0;
+            color: #616161;
+            font-size: 16px;
+        }
+        .card .btn {
+            color: #ffffff;
+            background-color: #00796b;
+            border: none;
+            border-radius: 25px;
+            padding: 8px 15px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .card .btn:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+        .text-center i {
+            margin-right: 10px;
+        }
+        @media (max-width: 576px) {
+            .card .avatar {
+                left: 10px;
+                width: 60px;
+                height: 60px;
+            }
+            .card p {
+                font-size: 14px;
+            }
+            .card .btn {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Titre -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center"><i class="fas fa-check-circle"></i> Liste des demandes terminées</h2>
+            </div>
+        </div>
+        
+        <!-- Barre de recherche -->
+        <div class="row align-items-center">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="search-container">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" [(ngModel)]="searchKeyword" class="form-control" placeholder="Rechercher..." aria-label="Rechercher" />
+                        <button class="btn" (click)="searchDemande()" aria-label="Rechercher">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Liste des demandes -->
+        <div class="row mt-4">
+            <div *ngFor="let Demande of (searchResults.length ? searchResults : demandes); let i = index" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Avatar -->
+                        <div class="avatar">
+                            <img [src]="avatars[i % avatars.length]" alt="Avatar de {{ Demande.etablissement }}" class="rounded-circle">
+                        </div>
+                        <!-- Informations de la demande -->
+                        <p><strong>Référence :</strong> {{ Demande.reference }}</p>
+                        <p><strong>Type de Stage :</strong> {{ Demande.typeStage }}</p>
+                        <p><strong>Niveau d'Étude :</strong> {{ Demande.niveauEtude }}</p>
+                        <p><strong>Établissement :</strong> {{ Demande.etablissement }}</p>
+                        <p><strong>Date de Début :</strong> {{ Demande.dateDebut | date:'dd/MM/yyyy' }}</p>
+                        <p><strong>Date de Fin :</strong> {{ Demande.dateFin | date:'dd/MM/yyyy' }}</p>
+                        <!-- Bouton Détails -->
+                        <div class="text-center mt-3">
+                            <a class="btn btn-sm" title="Voir détails" data-toggle="tooltip" (click)="DetailDemande(Demande.idDemande)">
+                                <i class="fa fa-info-circle"></i> Détails
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Initialisation des tooltips -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</body>
+</html>

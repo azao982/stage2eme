@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des stages</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f9fc;
+            color: #555;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #757474;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 8px;
+            font-family:Cursive;
+        }
+
+      
+
+        .card {
+            background-color: #eeeded; /* Couleur de fond plus claire pour les cartes */
+            border: 1px solid #e2e3e5; /* Bordure subtile */
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: #e2e3e5; /* Couleur de fond légèrement grise pour l'en-tête */
+            color: #495057; /* Couleur de texte légèrement plus sombre */
+            padding: 10px 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-header .card-title {
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .icon {
+            margin-right: 20px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            background-color: #e9ecef;
+            color: #6c757d;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-warning {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn-primary {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .btn-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .btn-dark {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+
+        .btn-success {
+            background-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .btn-secondary {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+
+        .modal-header {
+            border-bottom: none;
+            background-color: #d4edda;
+            color: #868f88;
+        }
+
+        .modal-footer {
+            border-top: none;
+            background-color: #d4edda;
+        }
+
+        .field-value {
+            color: #6c757d;
+        }
+
+        .card-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card-wrapper .card {
+            width: calc(50% - 20px); /* Ajustez la largeur pour tenir compte des marges */
+            margin: 10px;
+        }
+        h5{
+            font-weight: bold;
+            font-family: cursive;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="mb-4 text-center">
+        <h2>
+            <i class="fa fa-list"></i> Liste des stages 
+        </h2>
+    </header>
+    <div class="container">
+        <div class="search-container mb-3 d-flex align-items-center">
+            <input type="text" id="searchInput" [(ngModel)]="searchKeyword" class="form-control mr-2" placeholder="Rechercher..." />
+            <button class="btn btn-info search-button btn-sm mr-2" (click)="searchStage()">
+                <i class="fa fa-search"></i> Rechercher
+            </button>
+            <button class="btn btn-info filter-button btn-sm mr-2" (click)="filtrerStage(searchKeyword)">
+                <i class="fa fa-filter"></i> Filtrer
+            </button>
+        </div>
+        <div class="card-wrapper">
+            <div class="card" *ngFor="let stage of (searchResults.length ? searchResults : stages)">
+                <div class="card-body">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            <span class="icon"><i class="fa fa-book"></i></span> {{ stage.sujet }}
+                        </h5>
+                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showDetails(stage)">
+                            <i class="fa fa-eye"></i> Détails
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex mb-2">
+                            <div class="mr-2"><strong><i class="fa fa-calendar"></i> Date début :</strong></div>
+                            <div class="field-value">{{ stage.dateDebut }}</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="mr-2"><strong><i class="fa fa-calendar"></i> Date fin :</strong></div>
+                            <div class="field-value">{{ stage.dateFin }}</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="mr-2"><strong><i class="fa fa-money"></i> Montant :</strong></div>
+                            <div class="field-value">{{ stage.montant }}</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="mr-2"><strong><i class="fa fa-building"></i> Département :</strong></div>
+                            <div class="field-value">{{ stage.departement }}</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="mr-2"><strong><i class="fa fa-book"></i> Sujet :</strong></div>
+                            <div class="field-value">{{ stage.sujet }}</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="mr-2"><strong><i class="fa fa-info-circle"></i> Description :</strong></div>
+                            <div class="field-value">{{ stage.description }}</div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="ajouterDemandeStage(stage)">
+                                <i class="fa fa-plus-circle"></i> Ajouter Demande
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals pour les détails et l'ajout de demande -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Détails du stage</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-detailsstage [selectedStage]="selectedStage" class="details-section"></app-detailsstage>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                        <i class="fas fa-times"></i> Fermer
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="window.print()">
+                        <i class="fas fa-print"></i> Imprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2"><i class="fas fa-plus-circle"></i> Ajouter demande du stage</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-ajouter-demande-stage [selectedStage]="selectedStage" class="details-section"></app-ajouter-demande-stage>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

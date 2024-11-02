@@ -1,0 +1,131 @@
+
+body{
+  margin-top:20px;
+  background-color:#f2f6fc;
+  color:#69707a;
+  font-family:cursive;
+  font-weight: bold;
+  }
+  .img-account-profile {
+      height: 10rem;
+  }
+ input,option,label{
+    font-family: cursive;
+  }
+  .rounded-circle {
+      border-radius: 50% !important;
+  }
+  .card {
+      box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+  }
+  .card .card-header {
+      font-weight: 500;
+  }
+  .card-header:first-child {
+      border-radius: 0.35rem 0.35rem 0 0;
+  }
+  .card-header {
+      padding: 1rem 1.35rem;
+      margin-bottom: 0;
+      background-color: rgba(33, 40, 50, 0.03);
+      border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+  }
+  .form-control, .dataTable-input {
+      display: block;
+      width: 100%;
+      padding: 0.875rem 1.125rem;
+      font-weight: 400;
+      line-height: 1;
+      color: #69707a;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #c5ccd6;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: 0.35rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .nav-borders .nav-link.active {
+      color: #0061f2;
+      border-bottom-color: #0061f2;
+  }
+  .nav-borders .nav-link {
+      color: #444547;
+      border-bottom-width: 0.125rem;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 1rem;
+      margin-right: 1rem;
+  }
+  label{
+    font-family:cursive;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  h2{
+    font-family:cursive;
+    font-weight: bold;
+  }
+  .k{
+    margin-left: 180px;
+  }
+  .modal-content {
+    background-color: #f9f9f9;
+    border: none;
+  }
+
+  .modal-header {
+    background-color: #007bff;
+    color: #fff;
+    border-bottom: none;
+  }
+
+  .modal-footer {
+    background-color: #f9f9f9;
+    border-top: none;
+  }
+
+  .modal-title {
+    color: #fff;
+  }
+
+  .form-group label {
+    color: #333;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn-secondary:hover {
+    background-color: #545b62;
+    border-color: #545b62;
+  }
+
+  .btn-close {
+    color: #fff;
+  }
+
+  .btn-close:hover {
+    color: #ccc;
+  }
+  button{
+    size: 25px;
+  }

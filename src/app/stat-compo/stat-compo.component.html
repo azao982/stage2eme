@@ -1,0 +1,50 @@
+<style>
+  .statistics-container {
+    background-color: #f9f9f9; /* Light grey background */
+    border: 2px solid #ddd; /* Light grey border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 20px 0; /* Margin between the containers */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  }
+
+  .statistics-container:nth-child(1) {
+    background-color: #eafaf1; /* Light green background */
+    border: 2px solid #4CAF50; /* Green border */
+  }
+
+  .statistics-container:nth-child(2) {
+    background-color: #e7f0fa; /* Light blue background */
+    border: 2px solid #2196F3; /* Blue border */
+  }
+
+  .statistics-container:nth-child(3) {
+    background-color: #fbeaea; /* Light red background */
+    border: 2px solid #f44336; /* Red border */
+  }
+
+  .statistics-container h2 {
+    margin-top: 0;
+  }
+</style>
+
+<div class="statistics-container">
+  <h2 style="text-align:center; color: green; font-weight:bold;">
+    <i class="fas fa-chart-bar"></i> Statistiques API par Structure
+  </h2>
+  <div id="chart"></div>
+</div>
+
+<div class="statistics-container">
+  <h2 style="text-align:center; color: blue; font-weight:bold;">
+    <i class="fas fa-users"></i> Statistiques Users par Structure
+  </h2>
+  <div id="userChart"></div>
+</div>
+
+<div class="statistics-container">
+  <h2 style="text-align:center; color: red; font-weight:bold;">
+    <i class="fas fa-tasks"></i> Statistiques demandes par Users
+  </h2>
+  <div id="demandeChart"></div>
+</div>

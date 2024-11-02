@@ -1,0 +1,61 @@
+.header-title {
+  font-size: 1.5rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.thumb-sm {
+  width: 40px;
+  height: 40px;
+}
+
+.mail-row {
+  transition: all 0.3s ease;
+}
+
+.mail-row:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mail-row td {
+  padding: 1rem;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.btn-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.custom-card {
+  background-color: #5d86af; /* Couleur de fond de la carte */
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/assets/fonts/fontawesome/fontawesome-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

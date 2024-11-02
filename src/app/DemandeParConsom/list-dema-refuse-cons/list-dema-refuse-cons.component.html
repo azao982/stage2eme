@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des demandes refusées</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Roboto', sans-serif;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card .card-body {
+            position: relative;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .card .avatar {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+        }
+        .card .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+        }
+        .card p {
+            margin: 15px 0;
+            color: #444444;
+            text-align: center;
+        }
+        .card .btn {
+            color: #ffffff;
+            background-color: #e53935; /* Rouge */
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .card .btn:hover {
+            background-color: #c62828; /* Nuance de rouge au survol */
+        }
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .search-container .input-group {
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .search-container input {
+            border-right: none;
+            border-radius: 30px 0 0 30px;
+        }
+        .search-container button {
+            border-radius: 0 30px 30px 0;
+            border-left: none;
+            background-color: #e53935; /* Rouge */
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #c62828; /* Nuance de rouge au survol */
+        }
+        h2 {
+            color: #e53935; /* Rouge */
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2><b><i class="fas fa-times-circle" style="color: #e53935;"></i> Liste des demandes refusées</b></h2>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <!-- Loop through demand list -->
+        <div *ngFor="let Demande of (searchResults.length ? searchResults : demandes); let i = index" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <!-- Card structure for each demand -->
+            <div class="card rounded-bottom">
+                <!-- Card body -->
+                <div class="card-body">
+                    <!-- Avatar -->
+                    <div class="avatar avatar-xl">
+                        <img [src]="avatars[i % avatars.length]" alt="Avatar" class="rounded-circle">
+                    </div>
+                    <!-- Title and description for demand -->
+                    <p class="card-text"><strong>Etablissement:</strong> {{ Demande.etablissement }}</p>
+                    <p class="card-text"><strong>Référence:</strong> {{ Demande.reference }}</p>
+                    <p class="card-text"><strong>Type de Stage:</strong> {{ Demande.typeStage }}</p>
+                    <p class="card-text"><strong>Niveau d'Étude:</strong> {{ Demande.niveauEtude }}</p>
+                    <p class="card-text"><strong>Établissement:</strong> {{ Demande.etablissement }}</p>
+                    <p class="card-text"><strong>Date de Début:</strong> {{ Demande.dateDebut }}</p>
+                    <p class="card-text"><strong>Date de Fin:</strong> {{ Demande.dateFin }}</p>
+                    <!-- Actions -->
+                    <div class="text-center mt-3">
+                        <a class="btn btn-sm" title="Voir détails" data-toggle="tooltip" (click)="DetailDemande(Demande.idDemande)">
+                            <i class="fa fa-info-circle"></i> Détails
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

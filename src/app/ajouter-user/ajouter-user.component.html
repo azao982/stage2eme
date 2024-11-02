@@ -1,0 +1,178 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body{
+    background-color: rgb(157, 159, 160);
+    height: auto;
+  }
+  h2, label, h6, .modal-title, button, option {
+    font-family: cursive;
+    font-weight: bold;
+  }
+  .form-control {
+    font-family: cursive;
+  }
+  .btn-primary {
+    font-family:cursive;
+  }
+ h3 {
+    font-family: cursive;
+    color: red;
+    font-weight: bold;
+  }
+  h2{
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">
+      <h2><i class="fa fa-user-plus"></i> Créer un nouvel utilisateur</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm">
+        <!-- Nom -->
+       <!-- Nom -->
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="nom"><i class="fa fa-user"></i> Nom</label>
+      <input class="form-control" type="text" id="nom" formControlName="nom" required
+             [ngClass]="{'is-invalid': userForm.get('nom').invalid && userForm.get('nom').touched}">
+      <div *ngIf="userForm.get('nom').invalid && userForm.get('nom').touched" class="invalid-feedback">
+        <h3>Le nom ne doit pas être vide, il doit contenir au minimum 3 caractères.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Prénom -->
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="prenom"><i class="fa fa-user"></i> Prénom</label>
+      <input class="form-control" type="text" id="prenom" formControlName="prenom" required
+             [ngClass]="{'is-invalid': userForm.get('prenom').invalid && userForm.get('prenom').touched}">
+      <div *ngIf="userForm.get('prenom').invalid && userForm.get('prenom').touched" class="invalid-feedback">
+        <h3>Le prénom ne doit pas être vide, il doit contenir au minimum 3 caractères.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email -->
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="email"><i class="fa fa-envelope"></i> Email</label>
+      <input class="form-control" type="email" id="email" formControlName="email" required
+             [ngClass]="{'is-invalid': userForm.get('email').invalid && userForm.get('email').touched}">
+      <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched" class="invalid-feedback">
+        <h3>Un email valide est requis.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mot de passe -->
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="password"><i class="fa fa-lock"></i> Mot de passe</label>
+      <input class="form-control" type="password" id="password" formControlName="password" required
+             [ngClass]="{'is-invalid': userForm.get('password').invalid && userForm.get('password').touched}">
+      <div *ngIf="userForm.get('password').invalid && userForm.get('password').touched" class="invalid-feedback">
+        <h3>Un mot de passe est requis.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CIN -->
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="cin"><i class="fa fa-id-card"></i> CIN</label>
+      <input class="form-control" type="text" id="cin" formControlName="cin" required
+             [ngClass]="{'is-invalid': userForm.get('cin').invalid && userForm.get('cin').touched}">
+      <div *ngIf="userForm.get('cin').invalid && userForm.get('cin').touched" class="invalid-feedback">
+        <h3>Le CIN est requis, il doit contenir au minimum 8 chiffres.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile -->
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="mobile"><i class="fa fa-mobile"></i> Mobile</label>
+      <input class="form-control" type="text" id="mobile" formControlName="mobile" required
+             [ngClass]="{'is-invalid': userForm.get('mobile').invalid && userForm.get('mobile').touched}">
+      <div *ngIf="userForm.get('mobile').invalid && userForm.get('mobile').touched" class="invalid-feedback">
+        <h3>Le mobile est requis, il doit contenir au minimum 8 chiffres.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <div class="form-group">
+      <label for="profile"><i class="fa fa-users"></i> Profil</label>
+      <select class="form-control" id="profile" name="profile" formControlName="profile" required
+      [ngClass]="{'is-invalid': userForm.get('profile').invalid && userForm.get('profile').touched}">
+        <option value="admin">Admin</option>
+        <option value="encadrant">Encadrant</option>
+        <option value="stagiaire">Stagiaire</option>
+      </select>
+      <div *ngIf="userForm.get('profile').invalid && userForm.get('profile').touched" class="invalid-feedback">
+        <h6>Le profil est requis.</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="d-flex justify-content-center">
+          <button type="button" (click)="onAjouter()" class="btn btn-primary me-2" [disabled]="!userForm.valid">
+            <i class="fa fa-plus-circle"></i> Enregistrer Utilisateur
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="user-form-modal" tabindex="-1" aria-labelledby="user-form-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="user-form-modal-label"><i class="fas fa-envelope"></i> Ajouter un mail</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="mailForm">
+          <div class="form-group">
+            <label for="toEmail"><i class="fas fa-user"></i> Destinataire</label>
+            <input class="form-control" type="email" id="toEmail" formControlName="toEmail" required placeholder="Destinataire">
+          </div>
+          <div class="form-group">
+            <label for="subject"><i class="fas fa-calendar-alt"></i> Objet</label>
+            <input class="form-control" id="subject" formControlName="subject" required placeholder="Objet">
+          </div>
+          <div class="form-group">
+            <label for="body"><i class="fas fa-comment-alt"></i> Message</label>
+            <textarea class="form-control" id="body" formControlName="body" style="height: 130px;" required placeholder="Message"></textarea>
+          </div>
+          <br><br>
+            <i class="fas fa-paper-plane"></i><strong> Envoyer Mail</strong>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+h1
+{
+  color : rgb(215, 20, 20) ;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: beige;
+}
+
+h2{
+  margin-top: 50px;
+  color : black ;
+  text-align: center;
+  font-weight: bold;
+  font-style :normal;
+  font-family: 'Courier New', Courier, monospace;
+}
+.btn{
+  border-color: blue;
+  border-radius: 10% ;
+  margin-left : 20px ;
+  font-weight: bold;
+  font-family :'Times New Roman', Times, serif ;
+  text-align: center;
+  background-color: bisque;
+  justify-content: center;
+}

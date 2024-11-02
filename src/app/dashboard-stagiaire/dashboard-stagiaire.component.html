@@ -1,0 +1,111 @@
+<br><div class="container">
+    <div class="row align-items-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+            <!-- Background -->
+           
+            <div class="card rounded-bottom shadow-lg">
+                <div class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-xxl avatar-indicators avatar-online me-2 position-relative d-flex justify-content-end align-items-end mt-n10">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="avatar-xxl rounded-circle border border-2" alt="Image">
+                        </div>
+                        <div class="lh-1">
+                            <h2 class="mb-0">{{user?.nom}}</h2>
+                            <h2 class="mb-0">{{user?.prenom}}</h2>
+
+                            <p class="mb-0 d-block">{{user?.email}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary d-none d-md-block" (click)="EnvoyerMail()">
+                            <i class="fa fa-paper-plane"></i> Envoyer mail
+                          </button>                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="py-6">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-lg-4 col-12">
+                <div class="card mb-5 rounded-3 shadow-sm">
+                    <div class="image-placeholder rounded-top">
+                        <p class="text-overlay">Détails</p>
+                    </div>
+                    <div class="avatar avatar-xl mt-n7 ms-4">
+                        <i class="fas fa-info-circle fa-3x text-info"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-1">Détails</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-info d-none d-md-block" (click)="detailUser(user.idUser)">Voir</button>
+                            <div class="dropdown dropstart">
+                                <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle" id="dropdownMenuOne" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text me-2 icon-xxs dropdown-item-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuOne">
+                                    <a class="dropdown-item d-flex align-items-center" href="#!">Report</a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#!">Block</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-lg-4 col-12">
+                <div class="card mb-5 rounded-3 shadow-sm">
+                    <div class="image-placeholder rounded-top">
+                        <p class="text-overlay">Liste des stages</p>
+                    </div>
+                    <div class="avatar avatar-xl mt-n7 ms-4">
+                        <i class="fas fa-list fa-3x text-info"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-1">Liste des stages disponibles</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-info d-none d-md-block" (click)="VoirList()">Voir</button>
+                            <div class="dropdown dropstart">
+                                <a href="#!" class="btn btn-ghost btn-icon btn-sm rounded-circle" id="dropdownMenuTwo" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical icon-xs"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuTwo">
+                                    <a class="dropdown-item d-flex align-items-center" href="#!">Report</a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#!">Block</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-lg-4 col-12">
+                <div class="card mb-5 rounded-3 shadow-sm">
+                    <div class="image-placeholder rounded-top">
+                        <p class="text-overlay">Modifier</p>
+                    </div>
+                    <div class="avatar avatar-xl mt-n7 ms-4">
+                        <i class="fas fa-edit fa-3x text-info"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="mb-1">Modifier profil</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-info d-none d-md-block" (click)="modifierUser(user?.idUser)">Voir</button>
+                            <div class="dropdown dropstart">
+                                <a href="#!" id="dropdownMenuThree" class="btn btn-ghost btn-icon btn-sm rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical icon-xs"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuThree">
+                                    <a class="dropdown-item d-flex align-items-center" href="#!">Report</a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#!">Block</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

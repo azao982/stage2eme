@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de connexion</title>
+  <link rel="stylesheet" href="connexion.component.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Se connecter</h1>
+    </div>
+    <div class="form-container">
+      <form action="#">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Votre adresse email">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" placeholder="Votre mot de passe">
+        <button type="submit" routerLink="/ccueil">Se connecter</button>
+      </form>
+      <div class="separator"><span>ou</span></div>
+      <a href="#">Mot de passe oublié ?</a>
+      <a routerLink="/inscription">Créer un compte</a>
+    </div>
+  </div>
+</body>
+
+</html>

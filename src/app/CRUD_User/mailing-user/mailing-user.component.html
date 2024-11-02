@@ -1,0 +1,118 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card chat-app">
+
+            <div id="plist" class="people-list">
+               <h4 style="color:rgb(174, 182, 119);">Amis Connectés</h4>
+                <ul class="list-unstyled chat-list mt-2 mb-0">
+                   <li class="clearfix" *ngFor="let user of (searchResults.length ? searchResults : users)">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="avatar">
+
+                    <div class="about">
+                            <div class="nom" style="color:rgb(126, 135, 138);"><strong>{{user.nom}}</strong></div>
+                            <div class="mobile"> <i class="fa fa-phone"></i> {{user.mobile}}</div>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="chat">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                            </a>
+                            <div class="chat-about">
+                                <h6 class="m-b-0">{{user.nom}}</h6>
+                                <small>Derniere visite : 2Heures passées</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 hidden-sm text-right">
+                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-history">
+                    <ul class="m-b-0">
+
+                        <li class="clearfix">
+                            <div class="message-data text-right">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                              <span class="message-data-time">{{ getDateSysteme()}} à {{currentDateTime}}
+                                </span>
+                            </div>
+                            <div class="message other-message float-right"> Bonjour <strong>{{user.nom}} </strong>, J'espère que vous allez bien ? </div>
+                        </li>
+
+                        <li class="clearfix">
+                            <div class="message-data">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                <span class="message-data-time">{{ getDateSysteme()}} à {{currentDateTime}}
+                                </span>
+                            </div>
+                            <div class="message my-message">On peut se voir aujourd'hui ?</div>
+                        </li>
+
+                        <li class="clearfix">
+                          <div class="message-data text-right">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                              <span class="message-data-time">{{ getDateSysteme()}} à {{currentDateTime}}</span>
+                          </div>
+                          <div class="message other-message float-right"> D'accord vers quelle heure ? </div>
+                      </li>
+
+
+                      <li class="clearfix">
+                        <div class="message-data">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                            <span class="message-data-time">{{ getDateSysteme()}} à {{currentDateTime}}
+                            </span>
+                        </div>
+                        <div class="message my-message">ça vous convient vers <strong>{{currentDateTimeAdd}} </strong> ? </div>
+                    </li>
+
+                    <li class="clearfix">
+                      <div class="message-data text-right">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                          <span class="message-data-time">{{ getDateSysteme()}} à {{currentDateTime}}</span>
+                      </div>
+                      <div class="message other-message float-right"> D'accord. Merci de me laisser ton num mobile  </div>
+                    </li>
+
+                    <li class="clearfix">
+                      <div class="message-data">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                          <span class="message-data-time">{{ getDateSysteme()}} à {{currentDateTime}}
+                          </span>
+                      </div>
+                      <div class="message my-message">Bien sure, <strong>{{user.mobile}}</strong> </div>
+                  </li>
+
+
+                    </ul>
+                </div>
+                <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="font-size:30px; color:rgb(114, 173, 240);" class="fa fa-send"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Entrez votre texte ici...">
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<a href="accueil" style="color:rgb(247, 151, 151)">Retourner vers Accueil</a>
+
+<!---->

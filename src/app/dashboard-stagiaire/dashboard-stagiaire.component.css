@@ -1,0 +1,52 @@
+/* Card image placeholder */
+.image-placeholder {
+    background-color: #f0f0f0; /* Couleur de fond ou image de fond */
+    height: 180px; /* Ajustez selon vos besoins */
+    position: relative;
+    overflow: hidden;
+    border-radius: .25rem; /* Bordures arrondies */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333; /* Couleur du texte */
+    font-size: 18px; /* Taille du texte */
+    font-weight: bold; /* Poids du texte */
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+    border-radius: .25rem;
+}
+
+.card {
+    border: none; /* Suppression des bordures par défaut des cartes */
+}
+
+.card-body {
+    padding: 1.5rem; /* Espacement interne */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Couleur du bouton */
+    border-color: #007bff; /* Couleur de la bordure */
+}
+
+.btn-outline-primary {
+    color: #007bff; /* Couleur du texte */
+    border-color: #007bff; /* Couleur de la bordure */
+}
+
+.shadow-lg {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15); /* Ombre portée */
+}
+
+.bg-primary {
+    background-color: #007bff; /* Couleur de fond */
+}
+button,h2,p,h4{
+    font-family: cursive;
+    font-weight: bold;
+}

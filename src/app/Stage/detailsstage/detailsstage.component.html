@@ -1,0 +1,74 @@
+<style>
+  .api-details-container {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .api-details {
+    font-family: cursive;
+    color: #131212;
+  }
+  .api-details-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #272626;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-family: cursive;
+  }
+  .api-details-title i {
+    margin-right: 10px;
+    color: #4f4f50;
+  }
+  .api-info {
+    font-size: 16px;
+  }
+  .api-info-label {
+    font-weight: bold;
+    color: #777;
+  }
+  .api-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  .api-card:hover {
+    background-color: #f0f0f0;
+  }
+  .api-card-icon {
+    color: #9ba0a5;
+    margin-right: 10px;
+  }
+</style>
+<div *ngIf="selectedStage" class="api-details-container">
+  <div class="api-details">
+    <h4 class="api-details-title"><i class="fas fa-info-circle"></i> Détails du Stage</h4>
+    <div class="api-card">
+      <p><i class="fas fa-id-badge api-card-icon"></i> <span class="api-info-label">ID du Stage :</span> {{ selectedStage.idStage }}</p>
+    </div>
+    <div class="api-card">
+      <p><i class="fas fa-file-signature api-card-icon"></i> <span class="api-info-label">Sujet du Stage :</span> {{ selectedStage.sujet }}</p>
+    </div>
+    <div class="api-card">
+      <p><i class="fas fa-calendar-alt api-card-icon"></i> <span class="api-info-label">Date de Début :</span> {{ selectedStage.dateDebut | date }}</p>
+    </div>
+    <div class="api-card">
+      <p><i class="fas fa-file-alt api-card-icon"></i> <span class="api-info-label">Description :</span> {{ selectedStage.description }}</p>
+    </div>
+    <div class="api-card">
+      <p><i class="fas fa-calendar-alt api-card-icon"></i> <span class="api-info-label">Date de Fin :</span> {{ selectedStage.dateFin | date }}</p>
+    </div>
+    <div class="api-card">
+      <p><i class="fas fa-building api-card-icon"></i> <span class="api-info-label">Département :</span> {{ selectedStage.departement }}</p>
+    </div>
+    <div class="api-card">
+      <p><i class="fas fa-money-bill-wave api-card-icon"></i> <span class="api-info-label">Montant :</span> {{ selectedStage.montant | currency:'USD' }}</p>
+    </div>
+  </div>
+</div>

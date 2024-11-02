@@ -1,0 +1,76 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Courier New', Courier, monospace; /* Change to a cursive-like font */
+  }
+  
+  .card {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    font-family: cursive; /* Apply cursive font */
+    color: #343a40;
+  }
+
+  .form-label {
+    font-weight: bold;
+    font-family: cursive; /* Apply cursive font */
+  }
+
+  .form-control {
+    border-radius: 10px;
+    font-family: cursive; /* Apply cursive font */
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-family: cursive; /* Apply cursive font */
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+
+  .btn {
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+  
+</style>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="card p-4">
+              <div class="card-body">
+                  <form [formGroup]="mailForm">
+                      <div class="mb-3">
+                          <label for="toEmail" class="form-label"><i class="fas fa-user"></i> Destinataire</label>
+                          <input class="form-control" type="email" id="toEmail" formControlName="toEmail" required placeholder="Destinataire">
+                      </div>
+                      <div class="mb-3">
+                          <label for="subject" class="form-label"><i class="fas fa-calendar-alt"></i> Objet</label>
+                          <input class="form-control" id="subject" formControlName="subject" required placeholder="Objet">
+                      </div>
+                      <div class="mb-3">
+                          <label for="body" class="form-label"><i class="fas fa-comment-alt"></i> Message</label>
+                          <textarea class="form-control" id="body" formControlName="body" style="height: 130px;" required placeholder="Message"></textarea>
+                      </div>
+                      <div class="text-center">
+                          <button type="button" (click)="onAjouter()" class="btn btn-primary t" [disabled]="!mailForm.valid">
+                              <i class="fas fa-paper-plane"></i> Envoyer Mail
+                          </button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

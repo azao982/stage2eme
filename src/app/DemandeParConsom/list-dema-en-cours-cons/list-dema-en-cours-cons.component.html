@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Demandes en Cours</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 15px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-text {
+      font-size: 0.9rem;
+    }
+    .btn-sm {
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="text-center mb-4">
+          <i class="fas fa-tasks" style="font-size: 30px;"> </i>
+          <b style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:xx-large;"> Liste des demandes en Cours</b>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let Demande of (searchResults.length ? searchResults : demandes); let i = index">
+        <div class="card shadow-sm rounded" [ngStyle]="{ 'background-color': getColor(i) }">
+          <div class="card-body">
+            <!-- Avatar -->
+            <div class="avatar mb-3">
+              <img [src]="avatars[i % avatars.length]" alt="Avatar" class="rounded-circle border-4 border-white">
+            </div>
+            <!-- Title and description for demand -->
+            <p class="card-text"><strong>Etablissement:</strong> {{ Demande.etablissement }}</p>
+            <p class="card-text"><strong>Référence:</strong> {{ Demande.reference }}</p>
+            <p class="card-text"><strong>Type de Stage:</strong> {{ Demande.typeStage }}</p>
+            <p class="card-text"><strong>Niveau d'Étude:</strong> {{ Demande.niveauEtude }}</p>
+            <p class="card-text"><strong>Établissement:</strong> {{ Demande.etablissement }}</p>
+            <p class="card-text"><strong>Date de Début:</strong> {{ Demande.dateDebut }}</p>
+            <p class="card-text"><strong>Date de Fin:</strong> {{ Demande.dateFin }}</p>
+            <!-- Actions -->
+            <div class="text-center mt-3">
+              <a class="btn btn-primary btn-sm mr-2" title="Show" data-toggle="tooltip" (click)="DetailDemande(Demande.idDemande)">
+                <i class="fa fa-info-circle"></i> Détails
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

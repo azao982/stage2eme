@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amélioration de l'Interface</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #cfcece;
+            font-family: cursive;
+        }
+            h3{
+            font-family: cursive;
+            }
+        
+        .panel {
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .panel-heading {
+            background-color: #8b8b8b !important;
+            color: white !important;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .panel-title {
+            font-size: 24px;
+        }
+        .profile-pic {
+            margin-bottom: 20px;
+        }
+        .form-horizontal .form-group {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .form-control {
+            border-radius: 20px;
+        }
+        .input-icon {
+            position: relative;
+        }
+        .input-icon > i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+        }
+        .btn-dark {
+            background-color: #343a40;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+        }
+        .btn-dark:hover {
+            background-color: #b1b1b1;
+        }
+        .field-label-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .form-group h5 {
+            margin-bottom: 5px;
+        }
+        .password-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+            <div class="panel panel-default a" id="locked-screen">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-home"></i> Bienvenue chez CNI-StageHub
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" [formGroup]="userForm" (ngSubmit)="onlog()">
+                        <div class="profile-pic text-center">
+                            <img src="https://bootdey.com/img/Content/user_1.jpg" width="150px" class="img-circle img-thumbnail img-user">
+                        </div>
+                        <div class="form-group input-icon">
+                            <div class="col-md-12">
+                                <div class="field-label-with-icon">
+                                    <i class="fa fa-envelope"></i>
+                                    <h3>Adresse email</h3>
+                                </div>
+                                <input type="email" class="form-control" formControlName="email" placeholder="Entrez votre adresse mail">
+                            </div>
+                        </div>
+                        <div class="form-group input-icon">
+                            <div class="col-md-12">
+                                <div class="field-label-with-icon">
+                                    <i class="fa fa-lock"></i>
+                                    <h3>Mot de passe</h3>
+                                </div>
+                                <input type="password" class="form-control" formControlName="password" placeholder="Entrez votre mot de passe">
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-12 g">
+                                <button type="submit" class="btn btn-dark btn-block">
+                                    <i class="fa fa-sign-in u"></i> Connexion
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

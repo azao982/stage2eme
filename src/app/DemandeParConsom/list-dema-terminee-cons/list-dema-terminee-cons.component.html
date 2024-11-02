@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des demandes terminées</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ddecfd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card .card-body {
+            position: relative;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .card .avatar {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+        }
+        .card .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        .card p {
+            margin: 10px 0;
+            color: #555;
+        }
+        .card .btn {
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .card .btn:hover {
+            background-color: #0056b3;
+        }
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .search-container .input-group {
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .search-container input {
+            border-right: none;
+            border-radius: 30px 0 0 30px;
+        }
+        .search-container button {
+            border-radius: 0 30px 30px 0;
+            border-left: none;
+            background-color: #007bff;
+            color: #fff;
+        }
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            color: #007bff;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <h2 class="text-center mb-4"><b><i class="fas fa-check-circle"></i> Liste des demandes terminées</b></h2>
+            <br>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div *ngFor="let Demande of (searchResults.length ? searchResults : demandes); let i = index" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card rounded-bottom smooth-shadow-sm">
+                <div class="card-body">
+                    <div class="avatar avatar-xl">
+                        <img [src]="avatars[i % avatars.length]" alt="Avatar" class="rounded-circle">
+                    </div>
+                    <p class="card-text"><strong>Référence:</strong> {{ Demande.reference }}</p>
+                    <p class="card-text"><strong>Type du stage:</strong> {{ Demande.typeStage }}</p>
+                    <p class="card-text"><strong>Date de Début:</strong> {{ Demande.dateDebut }}</p>
+                    <p class="card-text"><strong>Date de Fin:</strong> {{ Demande.dateFin }}</p>
+                    <p class="card-text"><strong>Établissement:</strong> {{ Demande.etablissement }}</p>
+                    <p class="card-text"><strong>Niveau d'Étude:</strong> {{ Demande.niveauEtude }}</p>
+                    <div class="text-center mt-3">
+                        <a class="btn btn-sm" title="Voir détails" data-toggle="tooltip" (click)="DetailDemande(Demande.idDemande)">
+                            <i class="fa fa-info-circle"></i> Détails
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

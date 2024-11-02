@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        html, body {
+            height: 100px;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e1f5f8;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family:cursive;
+            font-weight: bold;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .card-title {
+            background-color: #d3e7ff;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: center;
+            font-family:cursive;
+            color: #333;
+        }
+
+        .btn-custom {
+            background-color: #80c7e0;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-custom i {
+            margin-right: 8px;
+        }
+
+        .btn-custom:hover {
+            background-color: #5ca8bf;
+        }
+
+        .form-group label {
+            font-family:cursive;
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: #f9f9f9;
+        }
+
+        .radio-icon label {
+            font-family:cursive;
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            justify-content: center;
+        }
+
+        .fa-info-circle,
+        .fa-check-circle,
+        .fa-exclamation-triangle {
+            color: #333;
+        }
+
+        h5 {
+            font-family: cursive;
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card-title">
+
+            <i class="fa fa-info-circle"></i> Détails de la demande N°{{demande.idDemande}}
+        </div>
+        <button class="btn btn-custom mb-3" onclick="window.print()"><i class="fas fa-print"></i> Imprimer</button>
+
+        
+
+        <div class="form-group row">
+            <div class="col-sm-6">
+              <label for="typeStage"><i class="fas fa-desktop icon"></i> Type de stage</label>
+              <input class="form-control" id="typeStage" type="text" name="typeStage" [(ngModel)]="demande.typeStage" required readonly>
+            </div>
+            <div class="col-sm-6">
+              <label for="reference"><i class="fas fa-server icon"></i> Référence</label>
+              <input class="form-control" id="reference" type="text" name="reference" [(ngModel)]="demande.reference" required readonly>
+            </div>
+            <div class="col-sm-6">
+              <label for="niveauEtude"><i class="fas fa-globe icon"></i> Niveau d'étude</label>
+              <input class="form-control" id="niveauEtude" type="text" name="niveauEtude" [(ngModel)]="demande.niveauEtude" required readonly>
+            </div>
+            <div class="col-sm-6">
+              <label for="etablissement"><i class="fas fa-globe icon"></i> Établissement</label>
+              <input class="form-control" id="etablissement" type="text" name="etablissement" [(ngModel)]="demande.etablissement" required readonly>
+            </div>
+            <div class="col-sm-6">
+              <label for="dateDebut"><i class="fas fa-calendar-alt icon"></i> Date de début</label>
+              <input class="form-control" id="dateDebut" type="date" name="dateDebut" [(ngModel)]="demande.dateDebut" required readonly>
+            </div>
+            <div class="col-sm-6">
+              <label for="dateFin"><i class="fas fa-calendar-alt icon"></i> Date de fin</label>
+              <input class="form-control" id="dateFin" type="date" name="dateFin" [(ngModel)]="demande.dateFin" required readonly>
+            </div>
+            <div class="col-sm-6">
+              <label for="statut"><i class="fas fa-info-circle icon"></i> Statut</label>
+              <input class="form-control" id="statut" type="text" name="statut" [(ngModel)]="demande.statut" required readonly>
+            </div>
+          </div>
+          
+          <h5><i class="fa fa-circle-info"></i> Autres détails sur cette demande</h5>
+          <form class="form-horizontal ng-pristine ng-valid">
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="idDemande"><i class="fas fa-bookmark icon"></i> ID Demande</label>
+                <input class="form-control" id="idDemande" type="number" name="idDemande" [(ngModel)]="demande.idDemande" required readonly>
+              </div>
+            </div>
+          
+            <div class="modal-footer">
+              <button type="button" class="btn btn-custom" (click)="closeModal()"><i class="fas fa-times"></i> Fermer</button>
+            </div>
+          </form>
+          

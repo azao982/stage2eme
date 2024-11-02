@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1{
+  font-weight: bold;
+  color:#85050a;
+}
+label{
+  font-weight: bold;
+}
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2d7d7;
+}
+
+.container {
+  width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px #fff ;
+  border-radius: 4px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group select {
+  height: 44px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  box-shadow: 0 0 2px 1px #4caf50;
+}
+
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #85050a;
+  margin-bottom: 10px; /* Ajoutez une marge basse pour séparer les boutons */
+}
+
+/* Vous pouvez également appliquer des styles spécifiques aux boutons ici, comme les couleurs, polices, etc. */
+.btn-cancel {
+  background-color: #e74c3c; /* Couleur de fond rouge pour le bouton Annuler Inscription */
+  color: #fff; /* Couleur du texte blanc */
+}
+
+.btn-submit {
+  background-color: #3498db; /* Couleur de fond bleue pour le bouton Inscrivez-vous */
+  color: #fff; /* Couleur du texte blanc */
+}
+
+
+/* Stylisez les liens (<a>) comme vous le souhaitez */
+a {
+  text-decoration: none;
+  color: inherit;
+}
